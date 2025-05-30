@@ -24,7 +24,23 @@ class Alumno extends Controller {
         DB::insert("INSERT INTO Alumno(id, nombres, apellidos, activo) VALUES(?,?,?,?)", [$id, $nombres, $apellidos, $activo]);
         
         return redirect()->action([Alumno::class, 'index']);
+    }
 
+    public function update(){
+        $id = $_POST['id'];
+        $nombres = $_POST['nombres'];
+        $apellidos = $_POST['apellidos'];
+
+        $activo = isset($_POST['activo']) == "on" ? 1 : 0;
+
+        DB::update("UPDATE Alumno SET nombres=?, apellidos=?, activo=? WHERE id=?", 
+        [$nombres, $apellidos, $activo, $id]);
+
+        return redirect()->action([Alumno::class, 'index']);
+    }
+
+    public function delete () {
+        
     }
 }
 

@@ -7,12 +7,14 @@
 </head>
 <body>
     <a href="alumno/create">Nuevo Alumno</a>
+    {{-- <a href="{{ route(create)}}">Nuevo Alumno</a> --}}
     <table border="1">
         <tr>
             <td>Id</td>
             <td>Nombres</td>
             <td>Apellidos</td>
             <td>Activo</td>
+            <td>Acción</td>
         </tr>
         @foreach($alumnos as $alumno)
 
@@ -21,6 +23,10 @@
                 <td>{{ $alumno->nombres }}</td>
                 <td>{{ $alumno->apellidos }}</td>
                 <td>{{ $alumno->activo }}</td>
+                <td>
+                    <a href="/alumno/edit/{{ $alumno->id }}">Editar</a>
+                    <a href="/alumno/delete/{{ $alumno->id }}">Eliminar</a>
+                </td>
             </tr>
 
         @endforeach
